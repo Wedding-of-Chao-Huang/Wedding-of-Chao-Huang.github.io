@@ -432,6 +432,107 @@
             color: #5a4e3f;
         }
 
+        /* ========== Hotel Map / Navigation ========== */
+        .map-card {
+            background: white;
+            border-radius: 20px;
+            padding: 0;
+            box-shadow: 0 4px 40px rgba(139, 111, 71, 0.08);
+            border: 1px solid rgba(201, 184, 150, 0.2);
+            overflow: hidden;
+        }
+
+        .map-embed {
+            width: 100%;
+            height: 300px;
+            border: none;
+            display: block;
+        }
+
+        .map-info {
+            padding: 2rem 2.5rem;
+        }
+
+        .map-hotel-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #4a3c2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .map-address {
+            font-size: 0.95rem;
+            color: #8b7a65;
+            margin-bottom: 1.5rem;
+        }
+
+        .map-nav-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #b8956a;
+            margin-bottom: 0.75rem;
+        }
+
+        .map-nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .map-nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .map-nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-nav-btn.gaode {
+            background: linear-gradient(135deg, #2b6cb0 0%, #3182ce 100%);
+            color: white;
+        }
+
+        .map-nav-btn.baidu {
+            background: linear-gradient(135deg, #c53030 0%, #e53e3e 100%);
+            color: white;
+        }
+
+        .map-nav-btn.tencent {
+            background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+            color: white;
+        }
+
+        .map-nav-btn.apple {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            .map-info {
+                padding: 1.5rem;
+            }
+
+            .map-nav-buttons {
+                flex-direction: column;
+            }
+
+            .map-nav-btn {
+                justify-content: center;
+            }
+        }
+
         /* ========== Footer ========== */
         .footer {
             text-align: center;
@@ -657,11 +758,38 @@
 
     <!-- Travel -->
     <section class="section" id="travel">
-        <p class="section-label">TRAVEL</p>
+        <p class="section-label">LOCATION</p>
         <h2 class="section-title">交通出行</h2>
         <div class="section-divider"></div>
 
-        <div class="travel-card">
+        <div class="map-card">
+            <iframe
+                class="map-embed"
+                src="https://uri.amap.com/marker?position=120.771441,30.752818&name=嘉兴博雅花园酒店&src=wedding-invitation&callnative=0"
+                allowfullscreen
+            ></iframe>
+            <div class="map-info">
+                <div class="map-hotel-name">嘉兴博雅花园酒店</div>
+                <div class="map-address">浙江省嘉兴市南湖区迎宾大道88号</div>
+                <div class="map-nav-label">导航前往</div>
+                <div class="map-nav-buttons">
+                    <a class="map-nav-btn gaode" href="https://uri.amap.com/navigation?to=120.771441,30.752818,嘉兴博雅花园酒店&mode=car&callnative=1" target="_blank" rel="noopener">
+                        高德地图
+                    </a>
+                    <a class="map-nav-btn baidu" href="https://api.map.baidu.com/marker?location=30.752818,120.771441&title=嘉兴博雅花园酒店&content=浙江省嘉兴市南湖区迎宾大道88号&output=html" target="_blank" rel="noopener">
+                        百度地图
+                    </a>
+                    <a class="map-nav-btn tencent" href="https://apis.map.qq.com/uri/v1/marker?marker=coord:30.752818,120.771441;title:嘉兴博雅花园酒店;addr:浙江省嘉兴市南湖区迎宾大道88号&referer=wedding" target="_blank" rel="noopener">
+                        腾讯地图
+                    </a>
+                    <a class="map-nav-btn apple" href="https://maps.apple.com/?q=嘉兴博雅花园酒店&address=浙江省嘉兴市南湖区迎宾大道88号" target="_blank" rel="noopener">
+                        Apple 地图
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="travel-card" style="margin-top: 2rem;">
             <p class="travel-desc">
                 我们为您准备了详细的交通出行指南<br>
                 包含景区交通、交通枢纽信息及实用出行建议<br>
@@ -671,8 +799,6 @@
                 &#128204; 查看交通出行攻略
             </a>
             <div class="travel-address">
-                <div class="travel-address-label">酒店地址</div>
-                <div class="travel-address-value">浙江省嘉兴市南湖区迎宾大道88号</div>
                 <div class="travel-address-label">联系电话</div>
                 <div class="travel-address-value">15927382865</div>
             </div>
