@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嘉兴博雅花园酒店 - 出游攻略</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #cffafe 100%);
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,112C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .address-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+        }
+
+        /* Section Styles */
+        .section {
+            margin: 3rem 0;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            padding: 1.5rem 2rem;
+            border-radius: 1rem 1rem 0 0;
+            color: white;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-header.purple {
+            background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+        }
+
+        /* Table Styles */
+        .table-container {
+            background: white;
+            border-radius: 0 0 1rem 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f8fafc;
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #475569;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        th.center {
+            text-align: center;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .destination {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .destination-icon {
+            font-size: 1.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .badge-green {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .badge-blue {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-orange {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+
+        .badge-red {
+            background: #fecaca;
+            color: #991b1b;
+        }
+
+        /* Recommendation Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .card-header.blue {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+        }
+
+        .card-header.purple {
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+        }
+
+        .card-header.amber {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+        }
+
+        .card-header.emerald {
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-header .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #16a34a;
+            white-space: nowrap;
+        }
+
+        .info-value {
+            color: #475569;
+        }
+
+        .info-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Transport Options */
+        .transport-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .transport-header {
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .transport-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .transport-options {
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .option-box {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .option-title {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .option-title::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+        }
+
+        .option-route {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .option-time {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .option-cost {
+            color: #16a34a;
+            font-weight: 600;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+            border: 2px solid #fbbf24;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tips-header {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .tip-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .tip-number {
+            background: #f59e0b;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .tip-text {
+            color: #475569;
+        }
+
+        .tip-text strong {
+            color: #1e293b;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            table {
+                font-size: 0.875rem;
+            }
+
+            th, td {
+                padding: 0.75rem 0.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .hero {
+                height: auto;
+                padding: 3rem 0;
+            }
+
+            .card:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>嘉兴博雅花园酒店</h1>
+            <p class="subtitle">出游交通指南</p>
+            <div class="address-badge">
+                <span>📍</span>
+                <span>浙江省嘉兴市南湖区迎宾大道88号</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Scenic Spots Table -->
+        <div class="section">
+            <div class="section-header">
+                <h2>
+                    <span>🧭</span>
+                    景区交通信息
+                </h2>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>目的地</th>
+                            <th class="center">🚶 步行</th>
+                            <th class="center">🚴 骑行</th>
+                            <th class="center">🚗 打车</th>
+                            <th class="center">🚌 公交/高铁</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">🏛️</span>南湖革命纪念馆</div></td>
+                            <td class="center"><span class="badge badge-green">10-15分钟</span></td>
+                            <td class="center"><span class="badge badge-blue">5分钟</span></td>
+                            <td class="center"><span class="badge badge-orange">5分钟</span></td>
+                            <td class="center">公交2站</td>
+                            <td>约900m</td>
+                        </tr>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">🌊</span>南湖景区</div></td>
+                            <td class="center"><span class="badge badge-green">25分钟</span></td>
+                            <td class="center"><span class="badge badge-blue">5分钟</span></td>
+                            <td class="center"><span class="badge badge-orange">5分钟</span></td>
+                            <td class="center">公交2站</td>
+                            <td>环湖景区，约1.5公里</td>
+                        </tr>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">🛍️</span>南湖天地</div></td>
+                            <td class="center"><span class="badge badge-green">40分钟</span></td>
+                            <td class="center"><span class="badge badge-blue">9分钟</span></td>
+                            <td class="center"><span class="badge badge-orange">5分钟</span></td>
+                            <td class="center">公交3站</td>
+                            <td>商业街区，约2公里</td>
+                        </tr>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">🏯</span>勺园</div></td>
+                            <td class="center"><span class="badge badge-green">25分钟</span></td>
+                            <td class="center"><span class="badge badge-blue">5分钟</span></td>
+                            <td class="center"><span class="badge badge-orange">8分钟</span></td>
+                            <td class="center">公交3-4站</td>
+                            <td>古典园林，约1.5公里</td>
+                        </tr>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">🏘️</span>月河历史街区</div></td>
+                            <td class="center"><span class="badge badge-green">1小时</span></td>
+                            <td class="center"><span class="badge badge-blue">14分钟</span></td>
+                            <td class="center"><span class="badge badge-orange">10分钟</span></td>
+                            <td class="center">公交5路/18路</td>
+                            <td>约4公里</td>
+                        </tr>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">🏰</span>嘉兴子城遗址公园</div></td>
+                            <td class="center"><span class="badge badge-green">40分钟</span></td>
+                            <td class="center"><span class="badge badge-blue">10分钟</span></td>
+                            <td class="center"><span class="badge badge-orange">10分钟</span></td>
+                            <td class="center">公交4-5站</td>
+                            <td>约2公里</td>
+                        </tr>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">🏞️</span>乌镇风景区</div></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-orange">45分钟</span></td>
+                            <td class="center">高铁到桐乡站+公交</td>
+                            <td>约34公里</td>
+                        </tr>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">✨</span>濮院时尚古镇</div></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-orange">25分钟</span></td>
+                            <td class="center">公交/旅游专线</td>
+                            <td>约16公里</td>
+                        </tr>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">🌉</span>西塘古镇</div></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-orange">50分钟</span></td>
+                            <td class="center">高铁到嘉善南站+公交</td>
+                            <td>约32公里</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Transport Hubs Table -->
+        <div class="section">
+            <div class="section-header purple">
+                <h2>
+                    <span>🚄</span>
+                    交通枢纽交通信息
+                </h2>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>目的地</th>
+                            <th class="center">🚶 步行</th>
+                            <th class="center">🚴 骑行</th>
+                            <th class="center">🚗 打车</th>
+                            <th class="center">🚌 公交/高铁</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">🚂</span>嘉兴站</div></td>
+                            <td class="center"><span class="badge badge-green">25-30分钟</span></td>
+                            <td class="center"><span class="badge badge-blue">10分钟</span></td>
+                            <td class="center"><span class="badge badge-orange">8-10分钟</span></td>
+                            <td class="center">公交4路/22路</td>
+                            <td>约2.1公里，火车站</td>
+                        </tr>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">🚄</span>嘉兴南站</div></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-blue">30分钟</span></td>
+                            <td class="center"><span class="badge badge-orange">15-20分钟</span></td>
+                            <td class="center">公交93路</td>
+                            <td>约6.6公里，高铁站</td>
+                        </tr>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">✈️</span>嘉兴南湖机场</div></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-orange">25分钟</span></td>
+                            <td class="center">无直达公交</td>
+                            <td>约8公里</td>
+                        </tr>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">🛫</span>杭州萧山机场</div></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-orange">90-120分钟</span></td>
+                            <td class="center">高铁：嘉兴南→杭州东→机场</td>
+                            <td>约100公里</td>
+                        </tr>
+                        <tr>
+                            <td><div class="destination"><span class="destination-icon">🛬</span>上海虹桥机场</div></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
+                            <td class="center"><span class="badge badge-orange">90-120分钟</span></td>
+                            <td class="center">高铁：嘉兴南→虹桥站</td>
+                            <td>约100公里</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Scenic Recommendations -->
+        <div class="section">
+            <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px;">
+                <span style="color: #2563eb;">ℹ️</span>
+                景区推荐方案
+            </h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header blue">
+                        <h3><span>🌅</span>南湖景区群</h3>
+                        <p class="subtitle">南湖革命纪念馆 · 南湖景区 · 勺园</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <span class="info-label">✓ 最佳方式:</span>
+                            <span class="info-value">步行/骑行</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-icon" style="color: #2563eb;">⏱</span>
+                            <span class="info-value">10-30分钟（步行）/ 5分钟（骑行）</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-icon" style="color: #f59e0b;">ℹ️</span>
+                            <span class="info-value">这三个景点都在酒店周边，步行可到达，沿途风景优美</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header purple">
+                        <h3><span>🏛️</span>市区文化景点</h3>
+                        <p class="subtitle">南湖天地 · 月河历史街区 · 子城遗址公园</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <span class="info-label">✓ 最佳方式:</span>
+                            <span class="info-value">骑行或打车</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-icon" style="color: #2563eb;">⏱</span>
+                            <span class="info-value">10-15分钟（骑行）/ 8-10分钟（打车）</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-icon" style="color: #f59e0b;">ℹ️</span>
+                            <span class="info-value">距离适中，骑行可欣赏沿途风景，打车更便捷</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header amber">
+                        <h3><span>🛶</span>水乡古镇</h3>
+                        <p class="subtitle">乌镇风景区 · 西塘古镇</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <span class="info-label">✓ 最佳方式:</span>
+                            <span class="info-value">打车</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-icon" style="color: #2563eb;">⏱</span>
+                            <span class="info-value">45-60分钟</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-icon" style="color: #f59e0b;">ℹ️</span>
+                            <span class="info-value">均为著名水乡古镇，打车费用约80-100元，建议安排一天时间游玩</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header emerald">
+                        <h3><span>✨</span>濮院时尚古镇</h3>
+                        <p class="subtitle">新兴网红景点</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-row">
+                            <span class="info-label">✓ 最佳方式:</span>
+                            <span class="info-value">打车或旅游专线</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-icon" style="color: #2563eb;">⏱</span>
+                            <span class="info-value">25分钟</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-icon" style="color: #f59e0b;">ℹ️</span>
+                            <span class="info-value">时尚与古典结合，打车费用约35-50元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transport Recommendations -->
+        <div class="section">
+            <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px;">
+                <span style="color: #7c3aed;">✈️</span>
+                交通枢纽推荐方案
+            </h2>
+
+            <div class="transport-card">
+                <div class="transport-header">
+                    <h3><span>🚂</span>嘉兴站（普速列车）</h3>
+                </div>
+                <div class="transport-options">
+                    <div class="option-box">
+                        <div class="option-title">公交</div>
+                        <div class="option-route">4路、22路、温泉小镇专线</div>
+                        <div class="option-meta">
+                            <span class="option-time">⏱ 15-20分钟</span>
+                            <span class="option-cost">💰 2元</span>
+                        </div>
+                    </div>
+                    <div class="option-box">
+                        <div class="option-title">打车</div>
+                        <div class="option-route">直达</div>
+                        <div class="option-meta">
+                            <span class="option-time">⏱ 8-10分钟</span>
+                            <span class="option-cost">💰 约10元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transport-card">
+                <div class="transport-header">
+                    <h3><span>🚄</span>嘉兴南站（高铁站）</h3>
+                </div>
+                <div class="transport-options">
+                    <div class="option-box">
+                        <div class="option-title">公交</div>
+                        <div class="option-route">93路</div>
+                        <div class="option-meta">
+                            <span class="option-time">⏱ 30-40分钟</span>
+                            <span class="option-cost">💰 2元</span>
+                        </div>
+                    </div>
+                    <div class="option-box">
+                        <div class="option-title">打车</div>
+                        <div class="option-route">直达</div>
+                        <div class="option-meta">
+                            <span class="option-time">⏱ 15-20分钟</span>
+                            <span class="option-cost">💰 约18-25元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transport-card">
+                <div class="transport-header">
+                    <h3><span>🛫</span>杭州萧山机场</h3>
+                </div>
+                <div class="transport-options">
+                    <div class="option-box">
+                        <div class="option-title">高铁</div>
+                        <div class="option-route">萧山机场→杭州东（地铁30分钟）→嘉兴南站（高铁25分钟）</div>
+                        <div class="option-meta">
+                            <span class="option-time">⏱ 1.5-2小时</span>
+                            <span class="option-cost">💰 约80元</span>
+                        </div>
+                    </div>
+                    <div class="option-box">
+                        <div class="option-title">大巴</div>
+                        <div class="option-route">萧山机场→嘉兴汽车客运中心（直达）</div>
+                        <div class="option-meta">
+                            <span class="option-time">⏱ 约2小时</span>
+                            <span class="option-cost">💰 约50-60元</span>
+                        </div>
+                    </div>
+                    <div class="option-box">
+                        <div class="option-title">打车</div>
+                        <div class="option-route">直达</div>
+                        <div class="option-meta">
+                            <span class="option-time">⏱ 90-120分钟</span>
+                            <span class="option-cost">💰 约200-300元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transport-card">
+                <div class="transport-header" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+                    <h3><span>🛬</span>上海虹桥机场（推荐）</h3>
+                </div>
+                <div class="transport-options">
+                    <div class="option-box">
+                        <div class="option-title">高铁</div>
+                        <div class="option-route">嘉兴南站→虹桥站（27-35分钟）→虹桥机场（步行10分钟）</div>
+                        <div class="option-meta">
+                            <span class="option-time">⏱ 1-1.5小时</span>
+                            <span class="option-cost">💰 约30-40元</span>
+                        </div>
+                    </div>
+                    <div class="option-box">
+                        <div class="option-title">大巴</div>
+                        <div class="option-route">虹桥机场→嘉兴（直达）</div>
+                        <div class="option-meta">
+                            <span class="option-time">⏱ 2-2.5小时</span>
+                            <span class="option-cost">💰 约58元</span>
+                        </div>
+                    </div>
+                    <div class="option-box">
+                        <div class="option-title">打车</div>
+                        <div class="option-route">直达</div>
+                        <div class="option-meta">
+                            <span class="option-time">⏱ 120-150分钟</span>
+                            <span class="option-cost">💰 约350-450元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="tips-section">
+            <h3 class="tips-header">
+                <span>💡</span>
+                实用提示
+            </h3>
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <div class="tip-number">1</div>
+                    <div class="tip-text"><strong>公交支付:</strong> 支持支付宝、微信、公交卡</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-number">2</div>
+                    <div class="tip-text"><strong>打车软件:</strong> 滴滴出行、高德地图、百度地图</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-number">3</div>
+                    <div class="tip-text"><strong>共享单车:</strong> 美团、哈啰、青桔均可使用</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-number">4</div>
+                    <div class="tip-text"><strong>高铁购票:</strong> 12306 APP、携程、去哪儿</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-number">5</div>
+                    <div class="tip-text"><strong>最佳出行时间:</strong> 避开早晚高峰（7:30-9:00, 17:00-19:00）</div>
+                </div>
+                <div class="tip-item">
+                    <div class="tip-number">6</div>
+                    <div class="tip-text"><strong>酒店班车:</strong> 部分时段酒店提供市区接送服务，可咨询前台</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>数据更新时间: 2026年3月</p>
+            <p style="margin-top: 0.5rem;">以上时间为估算值，实际时间可能因交通状况、天气等因素有所变化</p>
+        </footer>
+    </div>
+</body>
+</html>
