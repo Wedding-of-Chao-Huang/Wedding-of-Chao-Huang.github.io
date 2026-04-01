@@ -1,0 +1,8 @@
+{
+  "name": "my-static-site",
+  "assets": {
+    "directory": "./"
+  },
+  "installCommand": "",
+  "buildCommand": ""
+}
