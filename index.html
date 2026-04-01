@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>董超 & 黄丹璇 - 婚礼邀请</title>
+    <link rel="preconnect" href="https://fonts.googleapis.cn" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.cn/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.cn/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap">
+    </noscript>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
 
         * {
             margin: 0;
@@ -533,6 +537,144 @@
             }
         }
 
+        /* ========== Dress Code Carousel ========== */
+        .dresscode-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 40px rgba(139, 111, 71, 0.08);
+            border: 1px solid rgba(201, 184, 150, 0.2);
+            overflow: hidden;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 480px;
+            object-fit: contain;
+            background: #faf8f5;
+            display: block;
+        }
+
+        .carousel-caption {
+            text-align: center;
+            padding: 1.25rem 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .carousel-caption-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #4a3c2e;
+            margin-bottom: 0.25rem;
+        }
+
+        .carousel-caption-desc {
+            font-size: 0.9rem;
+            color: #8b7a65;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.85);
+            color: #4a3c2e;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, transform 0.3s;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev { left: 12px; }
+        .carousel-btn.next { right: 12px; }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 1rem 0;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: none;
+            background: #d4c5b0;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: #8b6f47;
+            transform: scale(1.3);
+        }
+
+        .dresscode-tips {
+            padding: 2rem;
+            border-top: 1px solid rgba(201, 184, 150, 0.2);
+        }
+
+        .dresscode-tips-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #4a3c2e;
+            text-align: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .dresscode-tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .dresscode-tip {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #5a4e3f;
+            line-height: 1.6;
+        }
+
+        .dresscode-tip-icon {
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
         /* ========== Footer ========== */
         .footer {
             text-align: center;
@@ -585,6 +727,18 @@
             .intro-card,
             .travel-card {
                 padding: 2rem 1.5rem;
+            }
+
+            .carousel-slide img {
+                height: 360px;
+            }
+
+            .dresscode-tips {
+                padding: 1.5rem;
+            }
+
+            .dresscode-tips-grid {
+                grid-template-columns: 1fr;
             }
 
             /* Timeline mobile */
@@ -642,6 +796,7 @@
             <ul class="nav-links">
                 <li><a href="#intro">婚礼简介</a></li>
                 <li><a href="#schedule">婚礼流程</a></li>
+                <li><a href="#dresscode">着装建议</a></li>
                 <li><a href="#travel">交通出行</a></li>
             </ul>
         </div>
@@ -756,6 +911,70 @@
         </div>
     </section>
 
+    <!-- Dress Code -->
+    <section class="section" id="dresscode">
+        <p class="section-label">DRESS CODE</p>
+        <h2 class="section-title">着装建议</h2>
+        <div class="section-divider"></div>
+
+        <div class="dresscode-card">
+            <div class="carousel" id="carousel">
+                <button class="carousel-btn prev" onclick="carouselPrev()">&#8249;</button>
+                <button class="carousel-btn next" onclick="carouselNext()">&#8250;</button>
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <img src="outfit-female.jpg" alt="女士着装参考">
+                        <div class="carousel-caption">
+                            <div class="carousel-caption-title">女士着装参考</div>
+                            <div class="carousel-caption-desc">浅色飘逸连衣裙 / 舒适低跟鞋</div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="outfit-male.jpg" alt="男士着装参考">
+                        <div class="carousel-caption">
+                            <div class="carousel-caption-title">男士着装参考</div>
+                            <div class="carousel-caption-desc">轻便西装外套 / 衬衫搭配休闲裤</div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="outfit-couple.jpg" alt="情侣着装参考">
+                        <div class="carousel-caption">
+                            <div class="carousel-caption-title">情侣着装参考</div>
+                            <div class="carousel-caption-desc">色调和谐的半正式搭配</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-dots">
+                    <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+                    <button class="carousel-dot" onclick="goToSlide(1)"></button>
+                    <button class="carousel-dot" onclick="goToSlide(2)"></button>
+                </div>
+            </div>
+
+            <div class="dresscode-tips">
+                <div class="dresscode-tips-title">温馨提示</div>
+                <div class="dresscode-tips-grid">
+                    <div class="dresscode-tip">
+                        <span class="dresscode-tip-icon">&#128087;</span>
+                        <span>草坪婚礼建议穿着<strong>舒适平底鞋或低跟鞋</strong>，避免细高跟鞋陷入草地</span>
+                    </div>
+                    <div class="dresscode-tip">
+                        <span class="dresscode-tip-icon">&#127800;</span>
+                        <span>推荐<strong>浅色、暖色系</strong>服装，与户外自然环境相得益彰</span>
+                    </div>
+                    <div class="dresscode-tip">
+                        <span class="dresscode-tip-icon">&#9728;&#65039;</span>
+                        <span>五月嘉兴气温宜人，建议<strong>备一件薄外套</strong>应对傍晚微凉</span>
+                    </div>
+                    <div class="dresscode-tip">
+                        <span class="dresscode-tip-icon">&#128683;</span>
+                        <span>请<strong>避免纯白色或纯黑色</strong>着装，以示对新人的祝福</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Travel -->
     <section class="section" id="travel">
         <p class="section-label">LOCATION</p>
@@ -792,12 +1011,17 @@
         <div class="travel-card" style="margin-top: 2rem;">
             <p class="travel-desc">
                 我们为您准备了详细的交通出行指南<br>
-                包含景区交通、交通枢纽信息及实用出行建议<br>
+                包含大交通枢纽信息及周边景点交通攻略<br>
                 帮助您轻松规划行程
             </p>
-            <a href="./travel.html" class="travel-link">
-                &#128204; 查看交通出行攻略
-            </a>
+            <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
+                <a href="./transport.html" class="travel-link">
+                    ✈️ 大交通指南
+                </a>
+                <a href="./scenic.html" class="travel-link">
+                    🏞️ 景点交通攻略
+                </a>
+            </div>
             <div class="travel-address">
                 <div class="travel-address-label">联系电话</div>
                 <div class="travel-address-value">15927382865</div>
@@ -821,6 +1045,45 @@
                 nav.classList.remove('scrolled');
             }
         });
+
+        // Carousel
+        var currentSlide = 0;
+        var totalSlides = 3;
+        var autoplayTimer;
+
+        function updateCarousel() {
+            var track = document.getElementById('carouselTrack');
+            track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+            var dots = document.querySelectorAll('.carousel-dot');
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].classList.toggle('active', i === currentSlide);
+            }
+        }
+
+        function carouselNext() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+            resetAutoplay();
+        }
+
+        function carouselPrev() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+            resetAutoplay();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+            resetAutoplay();
+        }
+
+        function resetAutoplay() {
+            clearInterval(autoplayTimer);
+            autoplayTimer = setInterval(carouselNext, 4000);
+        }
+
+        autoplayTimer = setInterval(carouselNext, 4000);
     </script>
 </body>
 </html>
