@@ -379,6 +379,32 @@
             margin-bottom: 0.5rem;
         }
 
+        /* Hotel Map */
+        .hotel-map-container {
+            max-width: 400px;
+            margin: 3rem auto 0;
+            text-align: center;
+        }
+
+        .hotel-map-caption {
+            font-size: 0.9rem;
+            color: #8b7a65;
+            margin-bottom: 1rem;
+        }
+
+        .hotel-map-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(139, 111, 71, 0.1);
+            border: 1px solid rgba(201, 184, 150, 0.3);
+        }
+
+        .hotel-map-wrapper img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
         /* ========== Travel Section ========== */
         .travel-card {
             background: white;
@@ -766,6 +792,11 @@
                 top: 10px;
                 transform: translate(-50%, 0);
             }
+
+            .hotel-map-container {
+                max-width: 300px;
+                margin-top: 2rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -851,8 +882,8 @@
                     <div style="font-size: 0.85rem; color: #9a8b78; margin-top: 2px;">浙江省嘉兴市南湖区迎宾大道88号</div>
                 </div>
                 <div class="intro-detail-item">
-                    <div class="intro-detail-icon">&#127807;</div>
-                    <div class="intro-detail-label">形式</div>
+                    <div class="intro-detail-icon">&#128143;</div>
+                    <div class="intro-detail-label">内容</div>
                     <div class="intro-detail-value">草坪婚礼 + 晚宴</div>
                     <div style="font-size: 0.85rem; color: #9a8b78; margin-top: 2px;">户外仪式 / 室内晚宴</div>
                 </div>
@@ -876,7 +907,7 @@
                     <div class="timeline-card">
                         <div class="timeline-icon">&#127881;</div>
                         <div class="timeline-title">迎宾 & 合影</div>
-                        <div class="timeline-desc">欢迎各位亲友的到来，签到留念</div>
+                        <div class="timeline-desc">欢迎各位亲友的到来，合影留念</div>
                     </div>
                 </div>
             </div>
@@ -909,12 +940,19 @@
                 </div>
             </div>
         </div>
+
+        <div class="hotel-map-container">
+            <p class="hotel-map-caption">博雅花园酒店手绘地图</p>
+            <div class="hotel-map-wrapper">
+                <img src="hotel.png" alt="博雅花园酒店手绘地图">
+            </div>
+        </div>
     </section>
 
     <!-- Dress Code -->
     <section class="section" id="dresscode">
         <p class="section-label">DRESS CODE</p>
-        <h2 class="section-title">着装建议</h2>
+        <h2 class="section-title">着装参考</h2>
         <div class="section-divider"></div>
 
         <div class="dresscode-card">

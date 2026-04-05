@@ -82,7 +82,7 @@
         }
 
         .section-header {
-            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
             padding: 1.5rem 2rem;
             border-radius: 1rem 1rem 0 0;
             color: white;
@@ -96,11 +96,15 @@
             gap: 12px;
         }
 
-        .section-header.purple {
-            background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+        /* Table Styles */
+        .table-hint {
+            background: white;
+            padding: 0.6rem 2rem;
+            font-size: 0.9rem;
+            color: #64748b;
+            border-bottom: 1px solid #f1f5f9;
         }
 
-        /* Table Styles */
         .table-container {
             background: white;
             border-radius: 0 0 1rem 1rem;
@@ -131,17 +135,14 @@
             border-bottom: 2px solid #e2e8f0;
         }
 
-        th.center {
-            text-align: center;
-        }
-
         td {
             padding: 1rem;
             border-bottom: 1px solid #f1f5f9;
         }
 
-        td.center {
-            text-align: center;
+        tbody tr {
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
         tbody tr:hover {
@@ -158,111 +159,6 @@
 
         .destination-icon {
             font-size: 1.5rem;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-align: center;
-            min-width: 80px;
-        }
-
-        .badge-green {
-            background: #dcfce7;
-            color: #166534;
-        }
-
-        .badge-blue {
-            background: #dbeafe;
-            color: #1e40af;
-        }
-
-        .badge-orange {
-            background: #fed7aa;
-            color: #9a3412;
-        }
-
-        .badge-red {
-            background: #fecaca;
-            color: #991b1b;
-        }
-
-        /* Transport Options */
-        .transport-card {
-            background: white;
-            border-radius: 1rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-        }
-
-        .transport-header {
-            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
-            padding: 1.5rem;
-            color: white;
-        }
-
-        .transport-header h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .transport-options {
-            padding: 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .option-box {
-            background: #f8fafc;
-            padding: 1rem;
-            border-radius: 0.5rem;
-        }
-
-        .option-title {
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .option-title::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: #3b82f6;
-            border-radius: 50%;
-        }
-
-        .option-route {
-            font-size: 0.9rem;
-            color: #64748b;
-            margin-bottom: 0.5rem;
-        }
-
-        .option-meta {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .option-time {
-            color: #2563eb;
-            font-weight: 600;
-        }
-
-        .option-cost {
-            color: #16a34a;
-            font-weight: 600;
         }
 
         /* Tips Section */
@@ -315,6 +211,33 @@
 
         .tip-text strong {
             color: #1e293b;
+        }
+
+        /* Back Navigation */
+        .back-nav {
+            text-align: center;
+            margin: 3rem 0 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.25);
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(124, 58, 237, 0.35);
         }
 
         /* Footer */
@@ -377,203 +300,50 @@
     <div class="container">
         <!-- Transport Hubs Table -->
         <div class="section">
-            <div class="section-header purple">
+            <div class="section-header">
                 <h2>
                     <span>🚄</span>
                     交通枢纽交通信息
                 </h2>
             </div>
+            <div class="table-hint">&#128073; 点击任意一行查看交通详情</div>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
                             <th>目的地</th>
-                            <th class="center">🚶 步行</th>
-                            <th class="center">🚴 骑行</th>
-                            <th class="center">🚗 打车</th>
-                            <th class="center">🚌 公交/高铁</th>
+                            <th>距离酒店</th>
                             <th>备注</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr onclick="window.location.href='./transport/jiaxing-station.html'">
                             <td><div class="destination"><span class="destination-icon">🚂</span>嘉兴站</div></td>
-                            <td class="center"><span class="badge badge-green">25-30分钟</span></td>
-                            <td class="center"><span class="badge badge-blue">10分钟</span></td>
-                            <td class="center"><span class="badge badge-orange">8-10分钟</span></td>
-                            <td class="center">公交10路</td>
-                            <td>约2.1公里，火车站</td>
+                            <td>约2.1公里</td>
+                            <td>火车站</td>
                         </tr>
-                        <tr>
+                        <tr onclick="window.location.href='./transport/jiaxing-south.html'">
                             <td><div class="destination"><span class="destination-icon">🚄</span>嘉兴南站</div></td>
-                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
-                            <td class="center"><span class="badge badge-blue">30分钟</span></td>
-                            <td class="center"><span class="badge badge-orange">15-20分钟</span></td>
-                            <td class="center">公交93路</td>
-                            <td>约6.6公里，高铁站</td>
+                            <td>约6.6公里</td>
+                            <td>高铁站</td>
                         </tr>
-                        <tr>
+                        <tr onclick="window.location.href='./transport/nanhu-airport.html'">
                             <td><div class="destination"><span class="destination-icon">✈️</span>嘉兴南湖机场</div></td>
-                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
-                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
-                            <td class="center"><span class="badge badge-orange">25分钟</span></td>
-                            <td class="center">无直达公交</td>
                             <td>约8公里</td>
+                            <td>本地机场</td>
                         </tr>
-                        <tr>
+                        <tr onclick="window.location.href='./transport/hangzhou-airport.html'">
                             <td><div class="destination"><span class="destination-icon">🛫</span>杭州萧山机场</div></td>
-                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
-                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
-                            <td class="center"><span class="badge badge-orange">90-120分钟</span></td>
-                            <td class="center">高铁：嘉兴南→杭州东→机场</td>
                             <td>约100公里</td>
+                            <td>浙江省主要机场</td>
                         </tr>
-                        <tr>
+                        <tr onclick="window.location.href='./transport/shanghai-hongqiao.html'">
                             <td><div class="destination"><span class="destination-icon">🛬</span>上海虹桥机场</div></td>
-                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
-                            <td class="center"><span class="badge badge-red">❌ 不推荐</span></td>
-                            <td class="center"><span class="badge badge-orange">90-120分钟</span></td>
-                            <td class="center">高铁：嘉兴南→虹桥站</td>
                             <td>约100公里</td>
+                            <td>上海主要机场</td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-
-        <!-- Transport Recommendations -->
-        <div class="section">
-            <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px;">
-                <span style="color: #7c3aed;">✈️</span>
-                交通枢纽推荐方案
-            </h2>
-
-            <div class="transport-card">
-                <div class="transport-header">
-                    <h3><span>🚂</span>嘉兴站（普速列车）</h3>
-                </div>
-                <div class="transport-options">
-                    <div class="option-box">
-                        <div class="option-title">公交</div>
-                        <div class="option-route">10路</div>
-                        <div class="option-meta">
-                            <span class="option-time">⏱ 15-20分钟</span>
-                            <span class="option-cost">💰 2元</span>
-                        </div>
-                    </div>
-                    <div class="option-box">
-                        <div class="option-title">打车</div>
-                        <div class="option-route">直达</div>
-                        <div class="option-meta">
-                            <span class="option-time">⏱ 8-10分钟</span>
-                            <span class="option-cost">💰 约10元</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="transport-card">
-                <div class="transport-header">
-                    <h3><span>🚄</span>嘉兴南站（高铁站）</h3>
-                </div>
-                <div class="transport-options">
-                    <div class="option-box">
-                        <div class="option-title">公交</div>
-                        <div class="option-route">93路</div>
-                        <div class="option-meta">
-                            <span class="option-time">⏱ 30-40分钟</span>
-                            <span class="option-cost">💰 2元</span>
-                        </div>
-                    </div>
-                    <div class="option-box">
-                        <div class="option-title">打车</div>
-                        <div class="option-route">直达</div>
-                        <div class="option-meta">
-                            <span class="option-time">⏱ 15-20分钟</span>
-                            <span class="option-cost">💰 约18-25元</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="transport-card">
-                <div class="transport-header" style="background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);">
-                    <h3><span>✈️</span>嘉兴南湖机场</h3>
-                </div>
-                <div class="transport-options">
-                    <div class="option-box">
-                        <div class="option-title">打车</div>
-                        <div class="option-route">直达</div>
-                        <div class="option-meta">
-                            <span class="option-time">⏱ 约25分钟</span>
-                            <span class="option-cost">💰 约30-40元</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="transport-card">
-                <div class="transport-header">
-                    <h3><span>🛫</span>杭州萧山机场</h3>
-                </div>
-                <div class="transport-options">
-                    <div class="option-box">
-                        <div class="option-title">高铁</div>
-                        <div class="option-route">萧山机场→杭州东（地铁30分钟）→嘉兴南站（高铁25分钟）</div>
-                        <div class="option-meta">
-                            <span class="option-time">⏱ 1.5-2小时</span>
-                            <span class="option-cost">💰 约30-40元</span>
-                        </div>
-                    </div>
-                    <div class="option-box">
-                        <div class="option-title">大巴</div>
-                        <div class="option-route">萧山机场→嘉兴汽车客运中心（直达）</div>
-                        <div class="option-meta">
-                            <span class="option-time">⏱ 约2小时</span>
-                            <span class="option-cost">💰 约50-60元</span>
-                        </div>
-                    </div>
-                    <div class="option-box">
-                        <div class="option-title">打车</div>
-                        <div class="option-route">直达</div>
-                        <div class="option-meta">
-                            <span class="option-time">⏱ 90-120分钟</span>
-                            <span class="option-cost">💰 约200-300元</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="transport-card">
-                <div class="transport-header" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
-                    <h3><span>🛬</span>上海虹桥机场</h3>
-                </div>
-                <div class="transport-options">
-                    <div class="option-box">
-                        <div class="option-title">高铁</div>
-                        <div class="option-route">嘉兴南站→虹桥站（27-35分钟）→虹桥机场（步行10分钟）</div>
-                        <div class="option-meta">
-                            <span class="option-time">⏱ 1-1.5小时</span>
-                            <span class="option-cost">💰 约30-40元</span>
-                        </div>
-                    </div>
-                    <div class="option-box">
-                        <div class="option-title">大巴</div>
-                        <div class="option-route">虹桥机场→嘉兴（直达）</div>
-                        <div class="option-meta">
-                            <span class="option-time">⏱ 2-2.5小时</span>
-                            <span class="option-cost">💰 约58元</span>
-                        </div>
-                    </div>
-                    <div class="option-box">
-                        <div class="option-title">打车</div>
-                        <div class="option-route">直达</div>
-                        <div class="option-meta">
-                            <span class="option-time">⏱ 90-120分钟</span>
-                            <span class="option-cost">💰 约350-450元</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -605,6 +375,10 @@
                     <div class="tip-text"><strong>最佳出行时间:</strong> 避开早晚高峰（7:30-9:00, 17:00-19:00）</div>
                 </div>
             </div>
+        </div>
+
+        <div class="back-nav">
+            <a href="./index.html" class="back-link">&#8592; 返回首页</a>
         </div>
 
         <!-- Footer -->
