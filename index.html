@@ -693,6 +693,85 @@
             letter-spacing: 4px;
         }
 
+        /* ========== RSVP Section ========== */
+        .rsvp-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 4px 40px rgba(139, 111, 71, 0.08);
+            border: 1px solid rgba(201, 184, 150, 0.2);
+            text-align: center;
+        }
+
+        .rsvp-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .rsvp-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #4a3c2e;
+            margin-bottom: 0.75rem;
+        }
+
+        .rsvp-desc {
+            font-size: 1rem;
+            color: #5a4e3f;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+
+        .rsvp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 40px;
+            background: linear-gradient(135deg, #BCE672 0%, #e8f0d0 100%);
+            color: #3a5a1c;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(160, 200, 80, 0.35);
+        }
+
+        .rsvp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(160, 200, 80, 0.45);
+        }
+
+        .rsvp-note {
+            font-size: 0.85rem;
+            color: #8b7a65;
+            margin-top: 1.25rem;
+        }
+
+        /* ========== Hotel Map Image ========== */
+        .hotel-map-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 40px rgba(139, 111, 71, 0.08);
+            border: 1px solid rgba(201, 184, 150, 0.2);
+            overflow: hidden;
+        }
+
+        .hotel-map-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .hotel-map-caption {
+            text-align: center;
+            padding: 1.25rem 1.5rem;
+            font-size: 0.9rem;
+            color: #8b7a65;
+        }
+
         /* ========== Responsive ========== */
         @media (max-width: 768px) {
             .nav-links {
@@ -795,6 +874,7 @@
             <div class="nav-logo">超 & 璇</div>
             <ul class="nav-links">
                 <li><a href="#intro">婚礼简介</a></li>
+                <li><a href="#rsvp">宾客统计</a></li>
                 <li><a href="#schedule">婚礼流程</a></li>
                 <li><a href="#dresscode">着装建议</a></li>
                 <li><a href="#travel">交通出行</a></li>
@@ -807,9 +887,9 @@
         <div class="hero-content">
             <p class="hero-date-top">2026年5月16日</p>
             <h1 class="hero-names">
-                董 超
-                <span class="hero-ampersand">&</span>
                 黄丹璇
+                <span class="hero-ampersand">&</span>
+                董 超
             </h1>
             <p class="hero-subtitle">我们结婚啦</p>
             <p class="hero-info">
@@ -860,6 +940,20 @@
         </div>
     </section>
 
+    <!-- RSVP -->
+    <section class="section" id="rsvp">
+        <p class="section-label">RSVP</p>
+        <h2 class="section-title">宾客信息统计</h2>
+        <div class="section-divider"></div>
+        <div class="rsvp-card">
+            <div class="rsvp-icon">&#128221;</div>
+            <div class="rsvp-title">请填写来宾信息问卷</div>
+            <p class="rsvp-desc">为了更好地为您安排住宿和接待<br>请尽早填写以下问卷，感谢您的配合</p>
+            <a href="https://docs.qq.com/form/page/DSGhTQmt3RVNKSkJS" class="rsvp-btn" target="_blank" rel="noopener">填写问卷</a>
+            <p class="rsvp-note">问卷填写仅需1分钟，请尽早提交以便我们安排</p>
+        </div>
+    </section>
+
     <!-- Wedding Schedule -->
     <section class="section" id="schedule">
         <p class="section-label">SCHEDULE</p>
@@ -875,8 +969,8 @@
                 <div class="timeline-right">
                     <div class="timeline-card">
                         <div class="timeline-icon">&#127881;</div>
-                        <div class="timeline-title">迎宾 & 合影</div>
-                        <div class="timeline-desc">欢迎各位亲友的到来，签到留念</div>
+                        <div class="timeline-title">迎宾合影</div>
+                        <div class="timeline-desc">欢迎各位亲友的到来，合影留念</div>
                     </div>
                 </div>
             </div>
@@ -914,7 +1008,7 @@
     <!-- Dress Code -->
     <section class="section" id="dresscode">
         <p class="section-label">DRESS CODE</p>
-        <h2 class="section-title">着装建议</h2>
+        <h2 class="section-title">着装参考</h2>
         <div class="section-divider"></div>
 
         <div class="dresscode-card">
@@ -1008,6 +1102,11 @@
             </div>
         </div>
 
+        <div class="hotel-map-card" style="margin-top: 2rem;">
+            <img src="hotel.png" alt="酒店手绘地图">
+            <div class="hotel-map-caption">酒店场地手绘地图 - 仪式区 / 晚宴区 / 住宿区</div>
+        </div>
+
         <div class="travel-card" style="margin-top: 2rem;">
             <p class="travel-desc">
                 我们为您准备了详细的交通出行指南<br>
@@ -1024,8 +1123,8 @@
             </div>
             <div class="travel-address">
                 <div class="travel-address-label">联系电话</div>
-                <div class="travel-address-value">15927382865</div>
-                <div class="travel-address-value">15827386817</div>
+                <div class="travel-address-value">董 15927382865</div>
+                <div class="travel-address-value">黄 15827386817</div>
             </div>
         </div>
     </section>
